@@ -1,5 +1,7 @@
-<li class="postFeed-post formatted" id="post-<?php the_ID(); ?>">
-    <h2 class="postFeed-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-    <p class="postFeed-byline">Posted by <?php the_author_posts_link(); ?> on <?php the_time('F j, Y'); ?> in <?php the_category(', '); ?> | <?php comments_number(); ?></p>
-    <?php the_excerpt(); ?>
+<li <?php post_class( array('portfolio-piece') ); ?> id="post-<?php the_ID(); ?>">
+    <a class="portfolio-thumbnail-container" href="<?php the_permalink(); ?>">
+        <img class="portfolio-thumbnail bw" src="<?php try_the_portfolio_piece_thumbnail_url( 'large', false ); ?>">
+        <img class="portfolio-thumbnail color" src="<?php try_the_portfolio_piece_thumbnail_url( 'large', true ); ?>">
+    </a>
+    <h5 class="portfolio-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 </li>

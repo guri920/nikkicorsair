@@ -1,0 +1,44 @@
+.portfolio {
+    .portfolio-list { .make-row(); }
+    .portfolio-piece { .make-xs-column(12); margin-bottom: 30px;
+        .portfolio-thumbnail-container { border: 8px solid @gray-light; display: block; margin-bottom: 15px; position: relative; }
+        .portfolio-thumbnail { transition: all .25s; width: 100%;
+            &.color { position: absolute; top: 0px; left: 0px; opacity: 0; }
+        }
+        .portfolio-title { font-family: @font-family-pixel; transition: all .25s;
+            a { color: #fff; text-shadow: 0 0 30px rgba( 255, 255, 255, .5 ), 0 0 10px rgba( 255, 255, 255, .75 ); }
+        }
+        
+        &:hover {
+            .portfolio-thumbnail-container { border-color: @brand-primary; box-shadow: 0 0 25px rgba( 1, 187, 19, .5 ), 0 0 15px rgba( 1, 187, 19, .75 ); }
+            .portfolio-thumbnail {
+                &.color { opacity: 1; }
+            }
+            .portfolio-title {
+                a { text-decoration: none; text-shadow: 0 0 30px rgba( 255, 255, 255, 1 ), 0 0 10px rgba( 255, 255, 255, 1 ); }
+            }
+        }
+    }
+}
+
+.touchevents {
+    .portfolio {
+        .portfolio-piece {
+            .portfolio-thumbnail-container { border-color: @brand-primary; box-shadow: 0 0 25px rgba( 1, 187, 19, .5 ), 0 0 15px rgba( 1, 187, 19, .75 ); }
+            .portfolio-thumbnail {
+                &.color { opacity: 1; }
+            }
+            .portfolio-title {
+                a { text-decoration: none; text-shadow: 0 0 30px rgba( 255, 255, 255, 1 ), 0 0 10px rgba( 255, 255, 255, 1 ); }
+            }
+        }
+    }
+}
+
+// Small and larger
+@media screen and (min-width: @screen-sm-min) {
+    .portfolio {
+        .portfolio-piece { .make-sm-column(6); }
+        .portfolio-thumbnail { width: auto; }
+    }
+}

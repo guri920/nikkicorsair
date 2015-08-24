@@ -1,14 +1,11 @@
 <?php the_post(); ?>
 
-<div class="container">
-	<section class="article row">
-		<article class="userFormatted col-sm-8">
-			<h1 class="article-title"><?php the_title(); ?></h1>
-			<?php the_content(); ?>
-			<section class="comments">
-				<?php comments_template(); ?>
-			</section>
-		</article>
-		<?php try_get_sidebar(); ?>
-	</section>
-</div>
+<section class="portfolio-piece">
+    <div class="portfolio-piece-container container">
+        <article class="composition">
+            <h1 class="portfolio-piece-title"><?php the_title(); ?></h1>
+            <?php if( $video = get_field('video') ) echo '<div class="video-container">' . $video . '</div>'; ?>
+            <?php the_content(); ?>
+        </article>
+    </div>
+</section>

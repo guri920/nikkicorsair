@@ -2,22 +2,25 @@
 Compositions
 ================================================================================= */
 
-.composition {}
-.composition-body {
-	ul, ol { margin: 0 0 20px; padding: 0 0 0 20px;
+.composition {
+	ul, ol { margin-bottom: 1em; padding: 0 0 0 20px;
 		ul, ol { margin: 0; }
 	}
 	ol { list-style: decimal outside; }
 	ul { list-style: disc outside; }
 	li { line-height: 1.5em; }
 
-	h1, h2, h3, h4, h5, h6 { margin: 0 0 20px; }
-	p { line-height: 1.5em; margin: 0 0 1.25em; }
+	h1, h2, h3, h4, h5, h6 { margin: 0 0 15px; }
+	p, .embed-responsive { line-height: 1.5em; margin-bottom: 1em; }
 	strong { font-weight: bold; }
+    
+    img { max-width: 100%; }
 }
 
 // Small and larger
-@media screen and (min-width: @screen-sm-min) {}
+@media screen and (min-width: @screen-sm-min) {
+    .video-container { float: right; width: 50%; margin-left: 1em; margin-bottom: 1em; }
+}
 
 // Medium and larger
 @media screen and (min-width: @screen-md-min) {}

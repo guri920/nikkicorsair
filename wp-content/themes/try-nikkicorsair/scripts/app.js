@@ -4,13 +4,11 @@
 
 require('es5-shim');
 require('consolelog');
+require('browsernizr/test/touchevents');
 
 var $               = require('jquery');
 var carousel        = require('./carousel.js');
-var responsive      = require('./responsive.js');
-var SocialModule    = require('./social.js');
 var AnalyticsModule = require('./analytics.js');
-var social = new SocialModule({ fbAppId: '' });
 var analytics = new AnalyticsModule({ gaid: '' });
 
 /**
@@ -18,7 +16,5 @@ var analytics = new AnalyticsModule({ gaid: '' });
  */
 $(function() {
 	analytics.init();
-	social.init();
 	carousel.init();
-	responsive.init();
 });

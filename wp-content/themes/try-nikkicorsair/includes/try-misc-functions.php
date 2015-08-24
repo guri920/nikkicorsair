@@ -37,17 +37,23 @@ function try_get_template_part( $slug, $name, $echo = true, $params = array() ) 
 /**
  * Loops through an array of posts objects and displays them using a given loop template
  *
- * @param array $posts Array of post objects
  * @param string $template Name of the loop template
+ * @param array $posts Array of post objects ( optional )
  */
-function try_posts_loop( $posts, $template ) {
-    global $post, $posts;
+function try_posts_loop( $template, $posts = null ) {
+    global $post;
     
+    // If a posts array is not provided grab the globally set default array from the main query
+    if( !$posts ) global $posts;
+    
+    // Loop through post objects and display them with a loop template
     foreach( $posts as $post ) {
         setup_postdata( $post );
         try_get_template_part('partials', 'loop-' . $template );
     }
-    wp_reset_query();
+    
+    // Reset query back to main if posts array was provided
+    if( $posts ) wp_reset_query();
 }
 
 /**

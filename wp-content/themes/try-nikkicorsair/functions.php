@@ -5,7 +5,9 @@ function try_theme_setup() {
 	add_theme_support('post-thumbnails');
 
 	// Add custom image sizes
-	// add_image_size( $name, $width = 0, $height = 0, $crop = false );
+    add_image_size('featured-image-small', 182, 130, true);
+	add_image_size('featured-image-large', 396, 130, true);
+	add_image_size('gallery', 450, 1200, false);
 
 	// Enable support for post formats
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
@@ -24,8 +26,7 @@ function try_theme_setup() {
 
 	// Register commonly used menus
 	register_nav_menus(array(
-		'primary-navigation' => 'Primary Navigation',
-		'secondary-navigation' => 'Secondary Navigation'
+		'header' => 'Header',
 	));
 
 	// Disables the admin bar

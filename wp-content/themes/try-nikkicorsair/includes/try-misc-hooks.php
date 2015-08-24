@@ -66,3 +66,31 @@ function try_custom_excerpt( $excerpt ) {
 	return $excerpt . '...';
 }
 //add_filter('wp_trim_excerpt', 'try_custom_excerpt');
+
+/**
+ * Removes height and width from default WP video oembed
+ * Also wraps in a p tag with a class for responsive styling
+ */
+function try_responsive_video_oembed( $return, $data, $url ) {
+	if( $data->type == 'video' ) {
+		// wrap embed with container for responsive styling
+		$return = '<div class="embed-responsive embed-responsive-16by9" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">' . $return . '</div>';
+		// remove hardcoded width and height
+		$return = preg_replace('/(width|height)="\d*"\s/', '', $return );
+		
+		// use preg_match to find iframe src
+		preg_match('/src="(.+?)"/', $return, $matches);
+		$src = $matches[1];
+		// add youtube params to iframe src
+		$params = array(
+			'rel' => 0, // removes related videos
+			'hd' => 1, // attempts to default to HD quality
+			'autohide' => 1, // hides controls by default
+			'showinfo' => 0 // hides video title and share tools
+		);
+		$new_src = add_query_arg( $params, $src );
+		$return = str_replace( $src, $new_src, $return );
+	}
+	return $return;
+}
+add_filter('oembed_dataparse', 'try_responsive_video_oembed', 10, 3);

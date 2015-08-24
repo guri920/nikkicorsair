@@ -9,18 +9,10 @@
 		<?php endif; ?>
 
 		<div class="header-menu mainMenu">
-			<div class="mainMenu-titleBar">
-				<button class="mainMenu-toggle">&times;</button>
-			</div>
-			<div class="searchForm searchForm--mainMenu">
-				<?php try_get_template_part('partials', 'searchform'); ?>
-			</div>
-
 			<?php wp_nav_menu( array(
 				'theme_location' => 'header',
 				'container' => 'nav',
 				'container_class' => 'mainMenu-menu',
-				'menu' => 'Header',
 				'menu_class' => 'mainMenu-list'
 			)); ?>
 		</div>

@@ -1,10 +1,7 @@
-<div class="container">
-	<div class="row">
-		<section class="postFeed col-sm-8">
-			<ol class="postFeed-postList">
-                <?php echo 'tesasd'; ?>
-                <?php try_posts_loop( $stuff, 'portfolio-piece' ); ?>
-			</ol>
-		</section>
-	</div>
-</div>
+<section class="portfolio">
+    <div class="portfolio-container container">
+        <ol class="portfolio-list">
+            <?php try_posts_loop( 'portfolio-piece' ); ?>
+        </ol>
+    </div>
+</section>

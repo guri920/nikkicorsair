@@ -2,30 +2,12 @@
 Header
 ================================================================================= */
 
-.header { margin: 0 0 40px; }
+.header { margin-bottom: 15px; }
 .header-container { .clearfix(); position: relative; }
 h1.header-logo { .hide-text(); font-size: 0; line-height: 0; margin: 0; padding: 0; }
-a.header-logo { .hide-text(); .at2x('../images/logo-xs.png', 60px, 38px); display: block; float: left; margin: 10px 0; .size(60px, 38px); }
+a.header-logo { .hide-text(); background: url(../images/logo.gif) 310px 124px; background-size: cover; display: block; margin: 15px auto; .size(310px, 124px); }
 
-// Small and larger
-@media screen and (min-width: @screen-sm-min) {
-	a.header-logo { .at2x('../images/logo-sm.png', 105px, 67px); .size(105px, 67px); }
-	.header-menu { position: absolute; top: 0; right: 15px; }
+// tiny only
+@media screen and (max-width: 320px) {
+    a.header-logo { position: relative; left: -5px; }
 }
-
-// Medium and larger
-@media screen and (min-width: @screen-md-min) {
-	a.header-logo { .at2x('../images/logo-md.png', 384px, 67px); .size(384px, 67px); }
-}
-
-// Large and larger
-@media screen and (min-width: @screen-lg-min) {}
-
-// X-Small only
-@media screen and (max-width: @screen-xs-max) {}
-
-// Small only
-@media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {}
-
-// Medium only
-@media screen and (min-width: @screen-md-min) and (max-width: @screen-md-max) {}
