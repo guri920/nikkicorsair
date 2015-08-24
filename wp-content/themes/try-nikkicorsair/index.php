@@ -3,6 +3,7 @@
 		<section class="postFeed col-sm-8">
 			<ol class="postFeed-postList">
 				<?php while( have_posts() ) : the_post(); ?>
+                    <?php try_posts_loop( $posts, 'portfolio-piece' ); ?>
 
 					<li class="postFeed-post formatted" id="post-<?php the_ID(); ?>">
 						<h2 class="postFeed-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>

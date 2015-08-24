@@ -35,6 +35,22 @@ function try_get_template_part( $slug, $name, $echo = true, $params = array() ) 
 }
 
 /**
+ * Loops through an array of posts objects and displays them using a given loop template
+ *
+ * @param array $posts Array of post objects
+ * @param string $template Name of the loop template
+ */
+function try_posts_loop( $posts, $template ) {
+    global $post;
+    
+    foreach( $posts as $post ) {
+        setup_postdata( $post );
+        try_get_template_part('partials', 'loop-' . $template );
+    }
+    wp_reset_query();
+}
+
+/**
  * Loads comment template
  *
  * @param object $comment The comment object

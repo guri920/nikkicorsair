@@ -1,5 +1,5 @@
 module.exports = {
-    domain: 'http://local.wordpress.com',
+    domain: 'http://local.nikkicorsair.net',
     paths: {
         scripts: './scripts',
         styles: './styles',
