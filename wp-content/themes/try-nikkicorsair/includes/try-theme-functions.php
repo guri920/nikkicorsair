@@ -1,26 +1,12 @@
 <?php
 
 /**
- * AJAX Function Template
+ * Retrieve thumbnail URL
  */
-function function_name() {
-	extract( $_POST, EXTR_SKIP );
-
-	$array = array();
-
-	echo json_encode( $array );
-	exit;
-}
-add_action( 'wp_ajax_nopriv_function_name', 'function_name' );
-add_action( 'wp_ajax_function_name', 'function_name' );
-
-/**
- * Returns template for email share
- */
-function get_form_email() {
+function try_the_portfolio_piece_thumbnail_url( $size = 'small', $color = true ) {
 	global $post;
-	echo try_get_template_part( 'partials/form', 'email' );
-	exit;
+	$color_string = ( $color ) ? 'color' : 'b&w';
+	$image_object = get_field('featured_image_' . $color_string );
+	
+	echo $image_object['sizes']['featured-image-' . $size ];
 }
-add_action('wp_ajax_nopriv_get_form_email', 'get_form_email');
-add_action('wp_ajax_get_form_email', 'get_form_email');
