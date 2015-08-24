@@ -7,9 +7,8 @@ gulp.task('browserSync', ['watch'], function() {
   browserSync({
     proxy: domain,
     files: [
-      paths.dist + '/**',
-      // Exclude Map files
-      '!' + paths.dist + '/**.map'
+        paths.theme + '/**/*.php',
+        paths.dist + '/**'
     ]
   });
 });

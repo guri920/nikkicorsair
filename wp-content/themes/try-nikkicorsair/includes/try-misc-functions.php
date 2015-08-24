@@ -41,7 +41,7 @@ function try_get_template_part( $slug, $name, $echo = true, $params = array() ) 
  * @param string $template Name of the loop template
  */
 function try_posts_loop( $posts, $template ) {
-    global $post;
+    global $post, $posts;
     
     foreach( $posts as $post ) {
         setup_postdata( $post );
