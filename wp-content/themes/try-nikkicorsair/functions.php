@@ -7,7 +7,8 @@ function try_theme_setup() {
 	// Add custom image sizes
     add_image_size('featured-image-small', 182, 130, true);
 	add_image_size('featured-image-large', 396, 130, true);
-	add_image_size('gallery', 450, 1200, false);
+	add_image_size('gallery-thumbnail', 300, 300, true);
+    add_image_size('gallery', 1920, 1080, false);
 
 	// Enable support for post formats
 	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );

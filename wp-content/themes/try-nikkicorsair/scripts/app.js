@@ -7,7 +7,7 @@ require('consolelog');
 require('browsernizr/test/touchevents');
 
 var $               = require('jquery');
-var carousel        = require('./carousel.js');
+var ui              = require('./ui.js');
 var AnalyticsModule = require('./analytics.js');
 var analytics = new AnalyticsModule({ gaid: '' });
 
@@ -15,6 +15,7 @@ var analytics = new AnalyticsModule({ gaid: '' });
  * Initialize the app on DOM ready
  */
 $(function() {
+    ui.initLightbox();
 	analytics.init();
 	carousel.init();
 });

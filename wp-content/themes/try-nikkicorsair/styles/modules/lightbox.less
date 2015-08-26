@@ -2,9 +2,16 @@
 Lightbox
 ================================================================================= */
 
-@import (inline) "vendor/colorbox.css";
+@import (inline) "../vendor/colorbox.css";
 
 // override defaults here...
+#cboxOverlay { background: @gray-darker; }
+.cboxPhoto { border: 8px solid @brand-primary; }
+#cboxClose,
+#cboxPrevious,
+#cboxNext { color: #fff; text-indent: 0px; .font-size(24); font-family: @font-family-pixel; top: -30px; width: auto; }
+#cboxPrevious { left: 0px; }
+#cboxNext { left: 30px; }
 
 // Small and larger
 @media screen and (min-width: @screen-sm-min) {}

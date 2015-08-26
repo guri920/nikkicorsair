@@ -2431,7 +2431,9 @@ input[type="button"].btn-block {
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after,
 .portfolio .portfolio-list:before,
-.portfolio .portfolio-list:after {
+.portfolio .portfolio-list:after,
+.portfolio-piece-gallery:before,
+.portfolio-piece-gallery:after {
   content: " ";
   display: table;
 }
@@ -2441,7 +2443,8 @@ input[type="button"].btn-block {
 .container-fluid:after,
 .row:after,
 .form-horizontal .form-group:after,
-.portfolio .portfolio-list:after {
+.portfolio .portfolio-list:after,
+.portfolio-piece-gallery:after {
   clear: both;
 }
 .center-block {
@@ -3031,13 +3034,61 @@ Layout
 /* =================================================================================
 Reusable pieces to include in modules
 ================================================================================= */
+.gform_wrapper ul {
+  list-style: none;
+  margin: 0px;
+  padding-left: 0px !important;
+}
+.gform_wrapper li {
+  list-style: none;
+  margin-bottom: 15px;
+}
+.gform_wrapper input,
+.gform_wrapper textarea {
+  border-radius: 4px;
+  border: none;
+  font-family: "pixelsplitterregular";
+  font-size: 16px;
+  font-size: 1.6rem;
+  padding: 8px;
+  width: 100%;
+}
+.gform_wrapper input[type="submit"] {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: "pixelsplitterregular";
+  font-size: 32px;
+  font-size: 3.2rem;
+  float: right;
+}
+.gform_wrapper textarea {
+  resize: none;
+}
+.gform_wrapper .gfield_error input::-webkit-input-placeholder {
+  color: #d9534f;
+}
+.gform_wrapper .gfield_error textarea::-webkit-input-placeholder {
+  color: #d9534f;
+}
+.gform_wrapper .validation_error {
+  color: #ff0000;
+  margin: 0 0 10px 0;
+}
+.gform_wrapper .validation_message {
+  display: none;
+}
+.gform_wrapper .gform_confirmation_message {
+  color: #5cb85c;
+}
 /* =================================================================================
 Compositions
 ================================================================================= */
 .composition ul,
 .composition ol {
   margin-bottom: 1em;
-  padding: 0 0 0 20px;
+  padding-left: 20px;
 }
 .composition ul ul,
 .composition ol ul,
@@ -3079,6 +3130,12 @@ Compositions
     width: 50%;
     margin-left: 1em;
     margin-bottom: 1em;
+  }
+}
+@media screen and (max-width: 767px) {
+  img {
+    width: 100%;
+    height: auto;
   }
 }
 /* =================================================================================
@@ -3162,6 +3219,83 @@ a.header-logo {
   }
 }
 /* =================================================================================
+Lightbox
+================================================================================= */
+/*
+    Colorbox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxWrapper {max-width:none;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+.cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of Colorbox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay{background:#fff;}
+#colorbox{outline:0;}
+    #cboxContent{margin-top:32px; overflow:visible; background:#000;}
+        .cboxIframe{background:#fff;}
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{background:#000; padding:1px;}
+        #cboxLoadingGraphic{background:url(images/loading.gif) no-repeat center center;}
+        #cboxLoadingOverlay{background:#000;}
+        #cboxTitle{position:absolute; top:-22px; left:0; color:#000;}
+        #cboxCurrent{position:absolute; top:-22px; right:205px; text-indent:-9999px;}
+
+        /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+        #cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {border:0; padding:0; margin:0; overflow:visible; text-indent:-9999px; width:20px; height:20px; position:absolute; top:-20px; background:url(images/controls.png) no-repeat 0 0;}
+        
+        /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+        #cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {outline:0;}
+
+        #cboxPrevious{background-position:0px 0px; right:44px;}
+        #cboxPrevious:hover{background-position:0px -25px;}
+        #cboxNext{background-position:-25px 0px; right:22px;}
+        #cboxNext:hover{background-position:-25px -25px;}
+        #cboxClose{background-position:-50px 0px; right:0;}
+        #cboxClose:hover{background-position:-50px -25px;}
+        .cboxSlideshow_on #cboxPrevious, .cboxSlideshow_off #cboxPrevious{right:66px;}
+        .cboxSlideshow_on #cboxSlideshow{background-position:-75px -25px; right:44px;}
+        .cboxSlideshow_on #cboxSlideshow:hover{background-position:-100px -25px;}
+        .cboxSlideshow_off #cboxSlideshow{background-position:-100px 0px; right:44px;}
+        .cboxSlideshow_off #cboxSlideshow:hover{background-position:-75px -25px;}
+
+#cboxOverlay {
+  background: #222222;
+}
+.cboxPhoto {
+  border: 8px solid #01bb13;
+}
+#cboxClose,
+#cboxPrevious,
+#cboxNext {
+  color: #fff;
+  text-indent: 0px;
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-family: "pixelsplitterregular";
+  top: -30px;
+  width: auto;
+}
+#cboxPrevious {
+  left: 0px;
+}
+#cboxNext {
+  left: 30px;
+}
+/* =================================================================================
 Menus
 ================================================================================= */
 .mainMenu-list {
@@ -3234,6 +3368,31 @@ Styles that apply to all modules
   text-decoration: none;
   text-shadow: 0 0 30px #ffffff, 0 0 10px #ffffff;
 }
+.portfolio-piece-gallery {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.portfolio-piece-gallery .portfolio-piece-gallery-thumbnail {
+  position: relative;
+  float: left;
+  width: 50%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 30px;
+}
+.portfolio-piece-gallery .portfolio-piece-gallery-thumbnail a {
+  border: 8px solid #999999;
+  display: block;
+}
+.portfolio-piece-gallery .portfolio-piece-gallery-thumbnail img {
+  max-width: 100%;
+}
+.portfolio-piece-gallery .portfolio-piece-gallery-thumbnail:hover a {
+  border-color: #01bb13;
+  -webkit-box-shadow: 0 0 25px rgba(1, 187, 19, 0.5), 0 0 15px rgba(1, 187, 19, 0.75);
+  box-shadow: 0 0 25px rgba(1, 187, 19, 0.5), 0 0 15px rgba(1, 187, 19, 0.75);
+}
 .touchevents .portfolio .portfolio-piece .portfolio-thumbnail-container {
   border-color: #01bb13;
   -webkit-box-shadow: 0 0 25px rgba(1, 187, 19, 0.5), 0 0 15px rgba(1, 187, 19, 0.75);
@@ -3246,6 +3405,11 @@ Styles that apply to all modules
   text-decoration: none;
   text-shadow: 0 0 30px #ffffff, 0 0 10px #ffffff;
 }
+.touchevents .portfolio-piece-gallery .portfolio-piece-gallery-thumbnail a {
+  border-color: #01bb13;
+  -webkit-box-shadow: 0 0 25px rgba(1, 187, 19, 0.5), 0 0 15px rgba(1, 187, 19, 0.75);
+  box-shadow: 0 0 25px rgba(1, 187, 19, 0.5), 0 0 15px rgba(1, 187, 19, 0.75);
+}
 @media screen and (min-width: 768px) {
   .portfolio .portfolio-piece {
     position: relative;
@@ -3256,10 +3420,36 @@ Styles that apply to all modules
   .portfolio .portfolio-thumbnail {
     width: auto;
   }
+  .portfolio-piece-gallery .portfolio-piece-gallery-thumbnail {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 @media screen and (min-width: 768px) and (min-width: 768px) {
   .portfolio .portfolio-piece {
     float: left;
     width: 50%;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 768px) {
+  .portfolio-piece-gallery .portfolio-piece-gallery-thumbnail {
+    float: left;
+    width: 33.33333333%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .portfolio-piece-gallery .portfolio-piece-gallery-thumbnail {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+@media screen and (min-width: 992px) and (min-width: 992px) {
+  .portfolio-piece-gallery .portfolio-piece-gallery-thumbnail {
+    float: left;
+    width: 25%;
   }
 }

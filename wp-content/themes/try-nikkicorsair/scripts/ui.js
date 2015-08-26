@@ -55,13 +55,13 @@ function equalHeights(cols) {
 };
 
 /**
- * Opens a lightbox for the item that is passed in
+ * Initializes lightbox
  */
-function openLightbox() {
-	$(this).colorbox({
-		iframe: true,
-		innerWidth: '80%',
-		innerHeight: '80%',
+function initLightbox() {
+	$('.js-lightbox').colorbox({
+        scalePhotos: true,
+        maxHeight: '80%',
+        maxWidth: '80%',
 		previous: '<',
 		next: '>',
 		close: 'x'
@@ -75,5 +75,5 @@ function openLightbox() {
 module.exports = {
 	equalHeights: equalHeights,
 	scrollTo: scrollTo,
-	openLightbox: openLightbox
+	initLightbox: initLightbox
 };
